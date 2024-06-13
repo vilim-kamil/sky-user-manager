@@ -38,7 +38,7 @@ public class User extends AbstractEntity<UserDTO> {
             name = "tb_user_external_projects",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "project_id"))
-    List<Project> projects;
+    private List<Project> projects;
 
     public User(Long id, String email, String name, UserRole role, List<Project> projects) {
         super(id);

@@ -4,7 +4,6 @@ import com.sky.usermanager.models.dto.ProjectDTO;
 import com.sky.usermanager.models.dto.ProjectDetailDTO;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,7 +26,7 @@ public class Project extends AbstractEntity<ProjectDTO> {
             name = "tb_user_external_projects",
             joinColumns = @JoinColumn(name = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-    List<User> users;
+    private List<User> users;
 
     public Project(Long id, String name) {
         super(id);
@@ -51,14 +50,6 @@ public class Project extends AbstractEntity<ProjectDTO> {
 
     public void setUsers(List<User> users) {
         this.users = users;
-    }
-
-    public void addUser(User user) {
-        if (users == null) {
-            users = new ArrayList<>();
-        }
-
-        users.add(user);
     }
 
     @Override
